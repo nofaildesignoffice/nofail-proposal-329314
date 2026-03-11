@@ -1,0 +1,1160 @@
+<!-- PAGE: 홈·소개 (Home) -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>꼬똥드툴레아 전문 브리더 | [클라이언트 확인 필요: 상호명] - 건강한 강아지 분양</title>
+  <meta name="description" content="꼬똥드툴레아만 키우는 전문 브리더. 혈통서·접종 이력 투명 공개, 직접 촬영한 사진·영상으로 건강한 강아지를 확인하세요.">
+  <meta name="keywords" content="꼬똥드툴레아 분양, 꼬똥드툴레아 브리더, 꼬똥드툴레아 강아지, 꼬똥 분양, Coton de Tulear breeder Korea">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --text-black: #1A1A1A;
+      --text-dark: #333333;
+      --text-gray: #666666;
+      --text-light: #999999;
+      --text-muted: #BCBCBC;
+      --bg-white: #FFFFFF;
+      --bg-light: #F5F5F5;
+      --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
+      --border-light: #E0E0E0;
+      --border-default: #D0D0D0;
+      --placeholder-bg: #E0E0E0;
+      --placeholder-icon: #BCBCBC;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      color: var(--text-gray);
+      line-height: 1.6;
+      background: var(--bg-white);
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; font-family: inherit; background: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* 헤더 */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
+    }
+    .nav.scrolled {
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-black);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .lang-toggle {
+      padding: 8px 16px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dark);
+      background: var(--bg-white);
+      transition: all 0.2s;
+    }
+    .lang-toggle:hover {
+      background: var(--bg-light);
+    }
+    .hamburger {
+      display: none;
+      width: 24px;
+      height: 24px;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 4px 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text-black);
+      transition: all 0.3s;
+    }
+
+    /* 히어로 슬라이더 */
+    .hero-slider {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      background: var(--bg-dark);
+    }
+    .slider-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .slide-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide-bg svg {
+      width: 120px;
+      height: 120px;
+      color: var(--placeholder-icon);
+    }
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #FFFFFF;
+      max-width: 800px;
+      padding: 0 24px;
+    }
+    .slide-title {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+    .slide-subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+    }
+    .slider-dots {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transition: all 0.3s;
+    }
+    .dot.active {
+      background: #FFFFFF;
+      width: 32px;
+      border-radius: 6px;
+    }
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      transition: all 0.3s;
+      z-index: 10;
+    }
+    .slider-nav:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .slider-prev { left: 24px; }
+    .slider-next { right: 24px; }
+
+    /* 공통 섹션 */
+    section {
+      padding: 80px 0;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    /* 버튼 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    /* 강아지 미리보기 그리드 */
+    .dogs-preview {
+      background: var(--bg-light);
+    }
+    .dogs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .dog-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .dog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .dog-card-img {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dog-card-img svg {
+      width: 48px;
+      height: 48px;
+      color: var(--placeholder-icon);
+    }
+    .dog-card-body {
+      padding: 20px;
+    }
+    .dog-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dog-card-meta {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+    .text-center {
+      text-align: center;
+    }
+
+    /* 견종 소개 */
+    .breed-intro {
+      background: var(--bg-white);
+    }
+    .breed-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .breed-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .feature-item {
+      padding: 20px;
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+    }
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .feature-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-dark);
+    }
+    .feature-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 4px;
+    }
+    .feature-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+    .breed-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .breed-img svg {
+      width: 64px;
+      height: 64px;
+      color: var(--placeholder-icon);
+    }
+    .breed-type-note {
+      margin-top: 32px;
+      padding: 24px;
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--text-black);
+    }
+    .breed-type-note h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .breed-type-note p {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .breed-type-note p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 입양 후기 */
+    .reviews-highlight {
+      background: var(--bg-light);
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .review-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      display: flex;
+      gap: 24px;
+    }
+    .review-img {
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+      border-radius: var(--radius-md);
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .review-img svg {
+      width: 40px;
+      height: 40px;
+      color: var(--placeholder-icon);
+    }
+    .review-content {
+      flex: 1;
+    }
+    .review-author {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 4px;
+    }
+    .review-dog-name {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .review-text {
+      font-size: 15px;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* SNS 연동 */
+    .sns-section {
+      background: var(--bg-white);
+    }
+    .sns-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 48px;
+    }
+    .sns-box {
+      text-align: center;
+    }
+    .sns-box h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .sns-box h3 svg {
+      width: 24px;
+      height: 24px;
+    }
+    .sns-preview {
+      margin-bottom: 24px;
+    }
+    .youtube-preview {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .youtube-preview svg {
+      width: 64px;
+      height: 64px;
+      color: var(--placeholder-icon);
+    }
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .instagram-item {
+      aspect-ratio: 1;
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .instagram-item svg {
+      width: 32px;
+      height: 32px;
+      color: var(--placeholder-icon);
+    }
+
+    /* 푸터 */
+    .footer {
+      padding: 60px 0 32px;
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-light);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .footer-brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .footer-info {
+      font-size: 13px;
+      color: var(--text-gray);
+      line-height: 1.8;
+    }
+    .footer-col-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: var(--text-light);
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover {
+      color: var(--text-dark);
+    }
+    .footer-sns {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .footer-sns a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .footer-sns a:hover {
+      background: var(--border-light);
+    }
+    .footer-sns svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-dark);
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-bottom a {
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .footer-bottom a:hover {
+      color: var(--text-gray);
+    }
+
+    /* 플로팅 버튼 */
+    .floating-btns {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 90;
+    }
+    .floating-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s;
+    }
+    .floating-btn:hover {
+      transform: translateY(-2px);
+    }
+    .kakao-btn {
+      background: #FEE500;
+      color: #3C1E1E;
+    }
+    .top-btn {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      color: var(--text-dark);
+      display: none;
+    }
+    .top-btn.visible {
+      display: flex;
+    }
+
+    /* 반응형 */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .lang-toggle {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+      .slide-title {
+        font-size: 32px;
+      }
+      .slide-subtitle {
+        font-size: 16px;
+      }
+      .slider-nav {
+        width: 40px;
+        height: 40px;
+      }
+      .slider-prev { left: 12px; }
+      .slider-next { right: 12px; }
+      section {
+        padding: 60px 0;
+      }
+      .section-title {
+        font-size: 28px;
+      }
+      .dogs-grid {
+        grid-template-columns: 1fr;
+      }
+      .breed-content {
+        grid-template-columns: 1fr;
+      }
+      .breed-features {
+        grid-template-columns: 1fr;
+      }
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+      .review-card {
+        flex-direction: column;
+      }
+      .review-img {
+        width: 100%;
+        height: 200px;
+      }
+      .sns-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .floating-btns {
+        right: 16px;
+        bottom: 16px;
+      }
+      .floating-btn {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="page_01.html" class="nav-logo">꼬똥켄넬</a>
+        <nav class="nav-links">
+          <a href="page_01.html" class="active">홈·소개</a>
+          <a href="page_02.html">강아지 소개</a>
+          <a href="page_03.html">후기·방문 안내</a>
+          <a href="page_04.html">상담·문의</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="lang-toggle">한국어 / 中文</button>
+          <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 섹션 1: 히어로 슬라이더 -->
+    <section class="hero-slider">
+      <div class="slider-track">
+        <!-- 슬라이드 1 -->
+        <div class="slide active">
+          <div class="slide-bg">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="slide-content">
+            <h1 class="slide-title">꼬똥드툴레아만 키웁니다</h1>
+            <p class="slide-subtitle">한 견종에 집중한 전문 브리더의 건강한 강아지</p>
+          </div>
+        </div>
+
+        <!-- 슬라이드 2 -->
+        <div class="slide">
+          <div class="slide-bg">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="slide-content">
+            <h2 class="slide-title">혈통서, 접종 이력, 전부 공개합니다</h2>
+            <p class="slide-subtitle">사진·영상으로 직접 확인하고 안심하세요</p>
+          </div>
+        </div>
+
+        <!-- 슬라이드 3 -->
+        <div class="slide">
+          <div class="slide-bg">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="slide-content">
+            <h2 class="slide-title">지금 만날 수 있는 강아지를 소개할게요</h2>
+            <p class="slide-subtitle">분양 중인 아이들을 직접 확인해 보세요</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-dots">
+        <button class="dot active"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+      </div>
+
+      <button class="slider-nav slider-prev">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <button class="slider-nav slider-next">
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </section>
+
+    <!-- 섹션 2: 강아지 미리보기 -->
+    <section class="dogs-preview">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">지금 새 가족을 기다리고 있어요</h2>
+          <p class="section-desc">분양 중인 꼬똥드툴레아를 만나보세요</p>
+        </div>
+
+        <div class="dogs-grid">
+          <a href="page_02.html" class="dog-card">
+            <div class="dog-card-img">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="dog-card-body">
+              <h3 class="dog-card-title">
+                [클라이언트 확인 필요: 강아지 이름]
+                <i data-lucide="heart"></i>
+              </h3>
+              <p class="dog-card-meta">[클라이언트 확인 필요: 성별] · [클라이언트 확인 필요: 개월수]</p>
+            </div>
+          </a>
+
+          <a href="page_02.html" class="dog-card">
+            <div class="dog-card-img">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="dog-card-body">
+              <h3 class="dog-card-title">
+                [클라이언트 확인 필요: 강아지 이름]
+                <i data-lucide="heart"></i>
+              </h3>
+              <p class="dog-card-meta">[클라이언트 확인 필요: 성별] · [클라이언트 확인 필요: 개월수]</p>
+            </div>
+          </a>
+
+          <a href="page_02.html" class="dog-card">
+            <div class="dog-card-img">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="dog-card-body">
+              <h3 class="dog-card-title">
+                [클라이언트 확인 필요: 강아지 이름]
+                <i data-lucide="heart"></i>
+              </h3>
+              <p class="dog-card-meta">[클라이언트 확인 필요: 성별] · [클라이언트 확인 필요: 개월수]</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="text-center">
+          <a href="page_02.html" class="btn btn-primary">
+            전체 보기 <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 3: 견종 소개 -->
+    <section class="breed-intro">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">솜사탕처럼 부드러운 털, 한 번 안으면 놓을 수 없는 아이</h2>
+          <p class="section-desc">마다가스카르에서 온 작고 다정한 반려견, 꼬똥드툴레아를 소개합니다</p>
+        </div>
+
+        <div class="breed-content">
+          <div>
+            <div class="breed-features">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i data-lucide="map-pin"></i>
+                </div>
+                <h4 class="feature-title">원산지</h4>
+                <p class="feature-desc">마다가스카르 (프랑스 공인)</p>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i data-lucide="weight"></i>
+                </div>
+                <h4 class="feature-title">체중</h4>
+                <p class="feature-desc">약 4~6kg 소형견</p>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i data-lucide="sparkles"></i>
+                </div>
+                <h4 class="feature-title">털 빠짐</h4>
+                <p class="feature-desc">거의 없음 — 저자극견으로 알레르기 걱정 ↓</p>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i data-lucide="smile"></i>
+                </div>
+                <h4 class="feature-title">성격</h4>
+                <p class="feature-desc">사람을 잘 따르고 아이·노인과도 잘 어울림</p>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i data-lucide="heart-pulse"></i>
+                </div>
+                <h4 class="feature-title">수명</h4>
+                <p class="feature-desc">평균 14~16년</p>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i data-lucide="star"></i>
+                </div>
+                <h4 class="feature-title">특징</h4>
+                <p class="feature-desc">밝고 명랑한 성격, 분리불안 적은 편</p>
+              </div>
+            </div>
+
+            <div class="breed-type-note">
+              <h4>펫타입 / 쇼타입 차이</h4>
+              <p><strong>펫타입:</strong> 가정에서 반려 목적으로 함께 생활하기에 적합한 아이</p>
+              <p><strong>쇼타입:</strong> 도그쇼 출전 기준에 부합하는 외모·체형을 갖춘 아이</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="breed-img">
+              <i data-lucide="image"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 4: 입양 후기 -->
+    <section class="reviews-highlight">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">먼저 가족이 된 분들의 이야기</h2>
+          <p class="section-desc">입양 후 보내주신 행복한 일상을 공유합니다</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-img">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="review-content">
+              <p class="review-author">[클라이언트 확인 필요: 입양자 닉네임]</p>
+              <p class="review-dog-name">[클라이언트 확인 필요: 강아지 이름]</p>
+              <p class="review-text">[클라이언트 확인 필요: 후기 내용]</p>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-img">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="review-content">
+              <p class="review-author">[클라이언트 확인 필요: 입양자 닉네임]</p>
+              <p class="review-dog-name">[클라이언트 확인 필요: 강아지 이름]</p>
+              <p class="review-text">[클라이언트 확인 필요: 후기 내용]</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="page_03.html" class="btn btn-primary">
+            후기 더 보기 <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 5: SNS 연동 -->
+    <section class="sns-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">강아지들의 일상, 영상으로 직접 확인하세요</h2>
+          <p class="section-desc">유튜브와 인스타그램에서 더 많은 모습을 만날 수 있어요</p>
+        </div>
+
+        <div class="sns-wrapper">
+          <div class="sns-box">
+            <h3>
+              <i data-lucide="youtube"></i>
+              유튜브
+            </h3>
+            <div class="sns-preview">
+              <div class="youtube-preview">
+                <i data-lucide="play-circle"></i>
+              </div>
+              <div class="youtube-preview">
+                <i data-lucide="play-circle"></i>
+              </div>
+            </div>
+            <a href="[클라이언트 확인 필요: 유튜브 채널 URL]" target="_blank" class="btn btn-secondary">
+              유튜브에서 보기 <i data-lucide="external-link"></i>
+            </a>
+          </div>
+
+          <div class="sns-box">
+            <h3>
+              <i data-lucide="instagram"></i>
+              인스타그램
+            </h3>
+            <div class="sns-preview">
+              <div class="instagram-grid">
+                <div class="instagram-item"><i data-lucide="image"></i></div>
+                <div class="instagram-item"><i data-lucide="image"></i></div>
+                <div class="instagram-item"><i data-lucide="image"></i></div>
+                <div class="instagram-item"><i data-lucide="image"></i></div>
+                <div class="instagram-item"><i data-lucide="image"></i></div>
+                <div class="instagram-item"><i data-lucide="image"></i></div>
+              </div>
+            </div>
+            <a href="[클라이언트 확인 필요: 인스타그램 URL]" target="_blank" class="btn btn-secondary">
+              인스타그램 팔로우 <i data-lucide="external-link"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">꼬똥켄넬</p>
+          <p class="footer-brand-desc">꼬똥드툴레아 전문 브리더</p>
+          <div class="footer-info">
+            <p>상호: [클라이언트 확인 필요: 정식 상호명]</p>
+            <p>대표: [클라이언트 확인 필요: 대표자명]</p>
+            <p>사업자등록번호: [클라이언트 확인 필요]</p>
+            <p>주소: [클라이언트 확인 필요: 주소]</p>
+            <p>전화: [클라이언트 확인 필요: 전화번호]</p>
+            <p>이메일: [클라이언트 확인 필요: 이메일]</p>
+          </div>
+          <div class="footer-sns">
+            <a href="[클라이언트 확인 필요: 유튜브 URL]" target="_blank">
+              <i data-lucide="youtube"></i>
+            </a>
+            <a href="[클라이언트 확인 필요: 인스타그램 URL]" target="_blank">
+              <i data-lucide="instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">메뉴</p>
+          <a href="page_01.html">홈·소개</a>
+          <a href="page_02.html">강아지 소개</a>
+          <a href="page_03.html">후기·방문 안내</a>
+          <a href="page_04.html">상담·문의</a>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">인증</p>
+          <p style="font-size:13px; color:var(--text-light);">[클라이언트 확인 필요: KKC 등록 브리더 마크]</p>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">상담 문의</p>
+          <p style="font-size:13px; color:var(--text-light);">카카오톡 채널</p>
+          <p style="font-size:13px; color:var(--text-light);">전화 상담</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 [클라이언트 확인 필요: 상호명]. All rights reserved.</span>
+        <span><a href="#">개인정보처리방침</a> | <a href="#">이용약관</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 플로팅 버튼 -->
+  <div class="floating-btns">
+    <a href="[클라이언트 확인 필요: 카카오톡 채널 상담 URL]" class="floating-btn kakao-btn" target="_blank">
+      <i data-lucide="message-circle"></i>
+    </a>
+    <button class="floating-btn top-btn">
+      <i data-lucide="arrow-up"></i>
+    </button>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // 히어로 슬라이더
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function startSlideshow() {
+      slideInterval = setInterval(nextSlide, 4500);
+    }
+
+    function resetSlideshow() {
+      clearInterval(slideInterval);
+      startSlideshow();
+    }
+
+    document.querySelector('.slider-next').addEventListener('click', () => {
+      nextSlide();
+      resetSlideshow();
+    });
+
+    document.querySelector('.slider-prev').addEventListener('click', () => {
+      prevSlide();
+      resetSlideshow();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentSlide = index;
+        showSlide(currentSlide);
+        resetSlideshow();
+      });
+    });
+
+    startSlideshow();
+
+    // 네비게이션 스크롤
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // TOP 버튼
+    const topBtn = document.querySelector('.top-btn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        topBtn.classList.add('visible');
+      } else {
+        topBtn.classList.remove('visible');
+      }
+    });
+
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
